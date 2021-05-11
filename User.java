@@ -13,3 +13,7 @@ public class User {
     // accessor and modifier methods
 
 }
+
+public createUser(){
+    
+}
