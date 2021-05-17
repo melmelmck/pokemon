@@ -7,6 +7,9 @@ public class Game {
     // class variables
     public static Map<String, Double> characters;
 
+    // public final
+    public final static int NUMBER_OF_CHARS = 1;
+
     // accessor and modifier methods
 
     // game specific and setup methods
@@ -20,13 +23,40 @@ public class Game {
     }
 
     // setup game method
-    public static void setUpGame() {
+    public static ArrayList<Fighter> getFighterData() {
 
-        // declare files
+        // deserialize
+        Fighter tempFighter = null;
+        ArrayList<Fighter> characterArray = new ArrayList<Fighter>();
 
         // get data from file to store in character array
+        int n = 0;
+        while (n < NUMBER_OF_CHARS) {
+            try {
+                FileInputStream fileIn = new FileInputStream("pokemon/FighterData.ser");
+                // starts object input stream
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+
+                // cast to onject
+                tempFighter = (Fighter) in.readObject();
+                in.close();
+                fileIn.close();
+
+            } catch (IOException i) { // catch exceptions
+                i.printStackTrace();
+                return characterArray;
+            } catch (ClassNotFoundException c) {
+                System.out.println("Class not found");
+                c.printStackTrace();
+                return characterArray;
+            }
+            n++;
+        }
 
         // check data in map to ensure correctness
+
+        // return data
+        return characterArray;
 
     }
 
