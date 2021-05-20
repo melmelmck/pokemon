@@ -12,8 +12,6 @@ public class User {
     private Queue<Move> movesPlayed;
 
     // accessor and modifier methods
-    createUser();
-    chooseFighter();
 
 
 }
@@ -37,12 +35,12 @@ public class User {
   }
 
 public chooseFighter(){
-  Game g = new Game(); //create an instance of Game class
-  System.out.println("Here are your character choices: " + g.printCharacters()); //print list of fighters
+  // Game g = new Game(); //create an instance of Game class
+  // System.out.println("Here are your character choices: " + g.printCharacters()); //print list of fighters
   System.out.println("Choose your fighter");
   Scanner s = new Scanner(System.in);
   while(s.hasNext){
-    fighterName = s.nextLine(); 
+    fighterName = s.nextLine().toLowerCase(); 
     f = new Fighter(fighterName); //create a new fighter with the name
   }
 }
