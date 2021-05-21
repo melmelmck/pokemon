@@ -1,4 +1,5 @@
 import java.util.*;
+
 import java.io.*;
 
 public class Game {
@@ -50,14 +51,38 @@ public class Game {
 
     public static ArrayList<Fighter> getFighterData() {
 
-        Fighter tempFighter = null;
         ArrayList<Fighter> characterArray = new ArrayList<Fighter>();
 
-        File fighterData = new File("pokemon/FighterData.txt");
+        File fighterData = new File("/Users/laasya/repos/GitHub/pokemon/FighterData.txt");
 
         try {
             Scanner sc = new Scanner(fighterData);
             // testing System.out.println(sc.nextLine());
+
+            String tempName;
+            String tempStrength;
+            String tempSpeed;
+            String tempStamina;
+            String tempFlying;
+            String tempTech;
+            String tempCombat;
+
+            while (sc.hasNext()) {
+                sc.next();
+                tempName = sc.next();
+                tempStrength = sc.next();
+                tempSpeed = sc.next();
+                tempStamina = sc.next();
+                tempFlying = sc.next();
+                tempTech = sc.next();
+                tempCombat = sc.next();
+
+                Fighter tempFighter = new Fighter(tempName, Integer.parseInt(tempStrength), Integer.parseInt(tempSpeed),
+                        Integer.parseInt(tempStamina), Integer.parseInt(tempFlying), Integer.parseInt(tempTech),
+                        Integer.parseInt(tempCombat));
+
+                characterArray.add(tempFighter);
+            }
 
         } catch (FileNotFoundException e) {
             System.out.println("Cannot find fighter data file.");
