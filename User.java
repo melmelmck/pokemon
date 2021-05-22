@@ -44,6 +44,25 @@ public chooseFighter(){
     f = new Fighter(fighterName); //create a new fighter with the name
   }
 }
+  // Getter
+  public String getName() {
+    return name;
+  }
+
+  // Setter
+  public void setName(String newName) {
+    this.name = newName;
+  }
+  // Getter
+    public Fighter getFighter() {
+        return f;
+      }
+    
+      // Setter
+      public void setFighter(Fighter f) {
+        this.f = f;
+      }
+
 
 public createUser(){
   Scanner sc = new Scanner(System.in);
