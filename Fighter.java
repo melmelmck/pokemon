@@ -40,6 +40,54 @@ public class Fighter implements java.io.Serializable {
         this.moves = moves;
     }
 
+    public int getStrength() {
+        return this.strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getSpeed() {
+        return this.speed;
+    }
+
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+
+    public int getStamina() {
+        return this.stamina;
+    }
+
+    public void setStamina(int stamina) {
+        this.stamina = stamina;
+    }
+
+    public int getFlyingPower() {
+        return this.flyingPower;
+    }
+
+    public void setFlyingPower(int flyingPower) {
+        this.flyingPower = flyingPower;
+    }
+
+    public int getTechnologySupport() {
+        return this.technologySupport;
+    }
+
+    public void setTechnologySupport(int technologySupport) {
+        this.technologySupport = technologySupport;
+    }
+
+    public int getCombatAbility() {
+        return this.combatAbility;
+    }
+
+    public void setCombatAbility(int combatAbility) {
+        this.combatAbility = combatAbility;
+    }
+
     // constructors
     public Fighter(String name) {
         this.name = name;
@@ -70,5 +118,25 @@ public class Fighter implements java.io.Serializable {
                 + flyingPower + " " + technologySupport + " " + combatAbility);
 
     }
+
+    // attack/move related methods
+
+    private double calculateCurrentHP(double critDamage) {
+
+        double currentHP = getHP() - critDamage;
+
+        setHP(currentHP);
+
+        return currentHP;
+
+    }
+
+    public void printStats() {
+        // print method
+        System.out.println("New Fighter: " + getName() + " has stats " + getStrength() + " " + getSpeed() + " "
+                + getStamina() + " " + getFlyingPower() + " " + getTechnologySupport() + " " + getCombatAbility());
+    }
+
+    // calculate overall score
 
 }
