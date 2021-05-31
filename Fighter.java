@@ -5,6 +5,7 @@ public class Fighter implements java.io.Serializable {
     // class variables
     public String name;
     private double currentHealthPercentage; // starts at 100?
+    private double score;
     private ArrayList<Move> moves;
 
     // stats data, ratings from one to ten
@@ -138,5 +139,9 @@ public class Fighter implements java.io.Serializable {
     }
 
     // calculate overall score
+    
+    public void printscore(double score){
+       
+    }
 
 }
