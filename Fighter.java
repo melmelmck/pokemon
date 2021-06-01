@@ -32,6 +32,14 @@ public class Fighter implements java.io.Serializable {
     public void setHP(double currentHealthPercentage) {
         this.currentHealthPercentage = currentHealthPercentage;
     }
+    
+    public double getScore(){
+        return this.score;
+    }
+    
+    public void setScore(){
+       this.score = score;
+    }
 
     public ArrayList<Move> getMoves() {
         return this.moves;
@@ -141,7 +149,9 @@ public class Fighter implements java.io.Serializable {
     // calculate overall score
     
     public void printscore(double score){
-       
+       double cscore = getScore + critDamage;
+       setScore(cscore);
+       System.out.println ("Score: " + cscore);
     }
 
 }
