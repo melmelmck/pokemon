@@ -148,6 +148,12 @@ public class Fighter implements java.io.Serializable {
 
     // calculate overall score
     
+    public void overallrating(){
+        Integer total = getStrength() + getSpeed() + getStamina() + getFlyingPower() + getTechnologySupport() + getCombatAbility(); 
+        Integer rating = total / 6;
+        System.out.println("Overall Rating" + rating);
+    }
+    
     public void printscore(double score){
        double cscore = getScore + critDamage;
        setScore(cscore);
