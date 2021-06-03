@@ -121,6 +121,7 @@ public class Fighter implements java.io.Serializable {
         this.combatAbility = combatAbility;
 
         // method calculating overall ratings
+        overallrating();
 
         // print method
         System.out.println("New Fighter: " + name + " has stats " + strength + " " + speed + " " + stamina + " "
@@ -148,8 +149,9 @@ public class Fighter implements java.io.Serializable {
 
     // calculate overall score
     
-    public void overallrating(){
-        Integer total = getStrength() + getSpeed() + getStamina() + getFlyingPower() + getTechnologySupport() + getCombatAbility(); 
+    public void overallrating(String name, int strength, int speed, int stamina, int flyingPower, int technologySupport,
+            int combatAbility){
+        Integer total = strength + speed + stamina + flyingPower + technologySupport + combatAbility; 
         Integer rating = total / 6;
         System.out.println("Overall Rating" + rating);
     }
