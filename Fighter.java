@@ -156,7 +156,7 @@ public class Fighter implements java.io.Serializable {
         System.out.println("Overall Rating" + rating);
     }
     
-    public void printscore(double score){
+    public void printscore(double critDamage){
        double cscore = getScore + critDamage;
        setScore(cscore);
        System.out.println ("Current Score: " + cscore);
