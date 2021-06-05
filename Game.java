@@ -73,6 +73,7 @@ public class Game {
                 user.playedRound();
             } else {
                 System.out.println("Well done! Here are your stats");
+                user.printStats();
                 userPlaying = false;
                 return;
             }
