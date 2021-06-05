@@ -124,6 +124,9 @@ public class Fighter implements java.io.Serializable {
         // moves
         this.moves = new ArrayList<Move>();
 
+        // hp
+        this.currentHealthPercentage = 100;
+
         // method calculating overall ratings
         overallrating(name, strength, speed, stamina, flyingPower, flyingPower, combatAbility);
 
@@ -150,6 +153,10 @@ public class Fighter implements java.io.Serializable {
 
     }
 
+    public void printHealthStatus() {
+        System.out.println("Currently, " + getName() + " is at a HP of: " + this.getHP() + " ");
+    }
+
     public void printStats() {
         // print method
         System.out.println("New Fighter: " + getName() + " has stats " + getStrength() + " " + getSpeed() + " "
@@ -171,5 +178,35 @@ public class Fighter implements java.io.Serializable {
         System.out.println("Current Score: " + cscore);
     }
 
+    public void resetFighterHealth() {
+        this.currentHealthPercentage = 100; // resets back to hundred
+
+    }
+
+    public void getAttacked(Move move) {
+        double damage = 0;
+
+        double critRate = move.getCritRate();
+
+        // probability
+        int randomNumberForProbabilityCalc = 0 + (int) (Math.random() * 100); // random int from 0 to 100
+        if (randomNumberForProbabilityCalc < critRate) {
+
+            // attack occurs
+            System.out.println("Attack for move: " + move.getMoveName() + " landed on " + getName() + "!");
+            damage = move.getCritDamage();
+
+        } else {
+            // move missed
+            System.out.println("Attack for move: " + move.getMoveName() + " missed " + getName() + "!");
+            damage = 0;
+        }
+
+        // calculates attack damage effect
+        calculateCurrentHP(damage);
+
+        System.out.println();
+
+    }
 
 }

@@ -62,7 +62,7 @@ public class Game {
             String response = sc.next();
 
             if (response.equals("yes")) {
-                boolean gameResult = playRound(); // true for wine, false for loss
+                boolean gameResult = playRound(user.getFighter(), sc); // true for wine, false for loss
 
                 if (gameResult) {
                     user.wonRound();
@@ -73,6 +73,8 @@ public class Game {
                 user.playedRound();
             } else {
                 System.out.println("Well done! Here are your stats");
+                user.printStats();
+                sc.close();
                 userPlaying = false;
                 return;
             }
@@ -80,10 +82,82 @@ public class Game {
         }
     }
 
-    public boolean playRound() {
+    public boolean playRound(Fighter self, Scanner sc) {
 
         boolean won = false; // true or false if won or not
 
+        int randomEnemyChoice = 1 + (int) (Math.random() * 8);
+        Fighter enemy = characters.get(randomEnemyChoice - 1.0);
+        System.out.println("Your enemy is...: " + enemy.getName() + "!");
+
+        // start battle
+        System.out.println("Start Fighting!");
+
+        boolean gameOngoing = true;
+
+        while (gameOngoing) {
+            System.out.println();
+
+            // USER MOVE
+            int numberOfMoves = self.getMoves().size();
+            for (int i = 1; i < numberOfMoves + 1; i++) {
+                String moveName = self.getMoves().get(i - 1).getMoveName();
+                System.out.println("Move " + i + " is: " + moveName);
+            }
+
+            System.out.println("What would you like to do?");
+            String smoveChose = sc.next();
+            int smoveChosen = Integer.parseInt(smoveChose) - 1;
+            String selfChosenMoveName = self.getMoves().get(smoveChosen).getMoveName();
+
+            // Enemy MOVE - randomly chosen
+            int enemymoveChosen = 0 + (int) (Math.random() * 2);
+            String enemyChosenMoveName = enemy.getMoves().get(enemymoveChosen).getMoveName();
+
+            // print their moves
+            System.out.println("You have chosen: " + selfChosenMoveName);
+            System.out.println("The enemy has chosen: " + enemyChosenMoveName);
+
+            // ATTACK effects
+            // self get attacked
+            self.getAttacked(enemy.getMoves().get(enemymoveChosen));
+            // enemy gets attacked
+            enemy.getAttacked(self.getMoves().get(smoveChosen));
+
+            // print health
+            self.printHealthStatus();
+            enemy.printHealthStatus();
+            System.out.println();
+
+            // winning or losing check
+
+            if (enemy.getHP() < 10) {
+                System.out.println("Enemy in Critical state!");
+            }
+            if (enemy.getHP() < 1) {
+                System.out.println("Enemy has been defeated");
+                won = true;
+
+                // resets health of both players for next battle
+                enemy.resetFighterHealth();
+                self.resetFighterHealth();
+                gameOngoing = false;
+            }
+
+            if (self.getHP() < 10) {
+                System.out.println("We are in Critical state!");
+            }
+            if (self.getHP() < 1) {
+                System.out.println("We have been defeated");
+                won = false;
+
+                // resets health of both players for next battle
+                enemy.resetFighterHealth();
+                self.resetFighterHealth();
+                gameOngoing = false;
+            }
+            System.out.println();
+        }
         return won;
 
     }

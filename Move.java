@@ -20,18 +20,28 @@ public class Move {
 
     }
 
-    public double setCritRate(double critRate) {
-        // we read in the crit rate from a file right? + same thing for damage?
-        return critRate;
+    public String getMoveName() {
+        return this.moveName;
     }
 
-    public double setCritDamage(double critDamage) {
-        // we read in the crit rate from a file right? + same thing for damage?
-        return critDamage;
+    public void setMoveName(String moveName) {
+        this.moveName = moveName;
     }
 
-    public void makeAttackMove() {
+    public double getCritRate() {
+        return this.critRate;
+    }
 
+    public void setCritRate(double critRate) {
+        this.critRate = critRate;
+    }
+
+    public double getCritDamage() {
+        return this.critDamage;
+    }
+
+    public void setCritDamage(double critDamage) {
+        this.critDamage = critDamage;
     }
 
     public void calculateDefensePercentage() {
