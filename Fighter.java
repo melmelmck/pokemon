@@ -32,13 +32,13 @@ public class Fighter implements java.io.Serializable {
     public void setHP(double currentHealthPercentage) {
         this.currentHealthPercentage = currentHealthPercentage;
     }
-    
-    public double getScore(){
+
+    public double getScore() {
         return this.score;
     }
-    
-    public void setScore(double score){
-       this.score = score;
+
+    public void setScore(double score) {
+        this.score = score;
     }
 
     public ArrayList<Move> getMoves() {
@@ -123,7 +123,6 @@ public class Fighter implements java.io.Serializable {
         // method calculating overall ratings
         overallrating(name, strength, speed, stamina, flyingPower, flyingPower, combatAbility);
 
-
         // print method
         System.out.println("New Fighter: " + name + " has stats " + strength + " " + speed + " " + stamina + " "
                 + flyingPower + " " + technologySupport + " " + combatAbility);
@@ -149,18 +148,18 @@ public class Fighter implements java.io.Serializable {
     }
 
     // calculate overall score
-    
+
     public void overallrating(String name, int strength, int speed, int stamina, int flyingPower, int technologySupport,
-            int combatAbility){
-        Integer total = strength + speed + stamina + flyingPower + technologySupport + combatAbility; 
+            int combatAbility) {
+        Integer total = strength + speed + stamina + flyingPower + technologySupport + combatAbility;
         Integer rating = total / 6;
         System.out.println("Overall Rating" + rating);
     }
-    
-    public void printscore(double critDamage){
-       double cscore = getScore + critDamage;
-       setScore(cscore);
-       System.out.println ("Current Score: " + cscore);
+
+    public void printscore(double critDamage) {
+        double cscore = getScore() + critDamage;
+        setScore(cscore);
+        System.out.println("Current Score: " + cscore);
     }
 
 }
