@@ -137,6 +137,7 @@ public class Fighter implements java.io.Serializable {
 
     public void addMove(Move m) {
         this.moves.add(m);
+        System.out.println("Move added");
     }
 
     private double calculateCurrentHP(double critDamage) {
@@ -169,5 +170,6 @@ public class Fighter implements java.io.Serializable {
         setScore(cscore);
         System.out.println("Current Score: " + cscore);
     }
+
 
 }
