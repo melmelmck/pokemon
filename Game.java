@@ -16,6 +16,8 @@ public class Game {
     public void startGame() {
         getFighterData();
         getMoveData();
+
+        System.out.println("Game Loaded!");
         promptStartGame();
 
     }
@@ -67,7 +69,7 @@ public class Game {
             String tempTech;
             String tempCombat;
 
-            int index = 0;
+            double index = 0;
 
             while (sc.hasNext()) {
                 sc.next();
@@ -84,8 +86,8 @@ public class Game {
                         Integer.parseInt(tempCombat));
 
                 characterArray.add(tempFighter);
-                characters.put((double) index, tempFighter);
-                index++;
+                characters.put(index, tempFighter);
+                index = index + 1;
             }
 
         } catch (FileNotFoundException e) {
@@ -94,6 +96,10 @@ public class Game {
 
         return characterArray;
 
+    }
+
+    public Game() {
+        this.characters = new HashMap<Double, Fighter>();
     }
 
     public ArrayList<Fighter> getMoveData() {
@@ -113,8 +119,6 @@ public class Game {
 
             int size = characters.size();
 
-            System.out.println("size: " + size);
-
             for (int i = 0; i < size; i++) {
 
                 // get
@@ -130,14 +134,13 @@ public class Game {
                     Move tempMove = new Move(moveName, Double.parseDouble(critRateString),
                             Double.parseDouble(critDamageString));
 
-                    fighter.getMoves().add(tempMove);
+                    fighter.addMove(tempMove);
 
                     System.out.println("Move: " + moveName + " added to character " + fighter.getName());
 
                 }
 
             }
-
         } catch (
 
         FileNotFoundException e) {
