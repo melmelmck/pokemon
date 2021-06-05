@@ -1,0 +1,39 @@
+Spiderman
+Web-Throw 55 6
+Web-Shooter 75 4
+Spin-Cycle 35 9
+
+Iron-Man
+Repulsor-Blast 81 4
+Missile 42 10
+Flying 15 7
+
+Captain-America
+Shield-Throw 58 8
+Punch 70 4
+Block 51 9
+
+Hulk
+Punch 71 5
+Smash 85 6
+Bludgeon 47 9
+
+Black-Widow
+Pounce 56 7
+Spider-Sweep 89 3
+Splinter-Kick 74 6
+
+Deadpool
+Dual-Shot 94 2
+Grenade-Toss 81 4
+Blade-Cyclone 60 9
+
+Wanda-Maximoff
+Telekinesis 84 5
+Chaos-Magic-Manipulation 46 9
+Psionic-Attack 38 8
+
+Gamora
+Side-Kick 95 6
+Vital-Strike 40 8
+The-Jade-Assassin 78 9
