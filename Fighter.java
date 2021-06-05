@@ -121,7 +121,8 @@ public class Fighter implements java.io.Serializable {
         this.combatAbility = combatAbility;
 
         // method calculating overall ratings
-        overallrating();
+        overallrating(name, strength, speed, stamina, flyingPower, flyingPower, combatAbility);
+
 
         // print method
         System.out.println("New Fighter: " + name + " has stats " + strength + " " + speed + " " + stamina + " "
