@@ -9,6 +9,7 @@ public class User {
 
   // roung specific
   private int roundsPlayed;
+  private int roundsWon;
   private Queue<Move> movesPlayed;
   private int userLevel;
 
@@ -18,10 +19,21 @@ public class User {
     return userLevel;
   }
 
+  // constructor
+  public User(String name, Fighter fighter) {
+    this.name = name;
+    this.f = fighter;
+    this.fighterName = name + " " + f.getName();
+    this.roundsPlayed = 0;
+    this.movesPlayed = new LinkedList<Move>();
+    this.userLevel = 0;
+  }
+
   // Setter
   public void setUserLevel(int userLevel) {
     this.userLevel = userLevel;
   }
+
   // Getter
   public String getName() {
     return name;
@@ -40,6 +52,35 @@ public class User {
   // Setter
   public void setFighter(Fighter f) {
     this.f = f;
+  }
+
+  // Getter
+  public int getRoundsPlayed() {
+    return roundsPlayed;
+  }
+
+  // Setter
+  public void setRoundsPlayed(int newRoundsPlayed) {
+    this.roundsPlayed = newRoundsPlayed;
+  }
+
+  public void playedRound() {
+    this.roundsPlayed = this.roundsPlayed + 1;
+  }
+
+  // Getter
+  public int getRoundsWon() {
+    return roundsWon;
+  }
+
+  // Setter
+  public void setRoundsWon(int newRoundsWon) {
+    this.roundsWon = newRoundsWon;
+  }
+
+  public void wonRound() {
+    this.roundsWon = this.roundsWon + 1;
+    System.out.println("Congrats on winning!");
   }
 
   public void chooseFighter() {
@@ -61,7 +102,8 @@ public class User {
       name = sc.nextLine();
     }
   }
-  public void updatePlayerLevel(){
+
+  public void updatePlayerLevel() {
     userLevel++;
-}
+  }
 }

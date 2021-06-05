@@ -8,7 +8,7 @@ public class Game {
     public Map<Double, Fighter> characters;
 
     // public final
-    public final static int NUMBER_OF_CHARS = 9;
+    public final static int NUMBER_OF_CHARS = 8;
 
     // accessor and modifier methods
 
@@ -19,6 +19,8 @@ public class Game {
 
         System.out.println("Game Loaded!");
         promptStartGame();
+
+        System.out.println("Thanks for playing!");
 
     }
 
@@ -44,8 +46,45 @@ public class Game {
         System.out.println("Which character would you like to choose?(Enter Number!)");
 
         for (int i = 1; i <= NUMBER_OF_CHARS; i++) {
-            System.out.println("Character " + i + " : " + characters.get(i - 1));
+            System.out.println("Character " + i + " : " + characters.get(i - 1.0).getName());
         }
+
+        int characterChoice = Integer.parseInt(sc.next());
+
+        System.out.println("You have chosen: " + characters.get(characterChoice - 1.0).getName() + "!");
+
+        User user = new User(userName, characters.get(characterChoice - 1.0));
+
+        boolean userPlaying = true; // while user plays game
+
+        while (userPlaying) {
+            System.out.println("Would you like to fight a round?");
+            String response = sc.next();
+
+            if (response.equals("yes")) {
+                boolean gameResult = playRound(); // true for wine, false for loss
+
+                if (gameResult) {
+                    user.wonRound();
+                } else {
+                    System.out.println("Better Luck Next time!");
+                }
+
+                user.playedRound();
+            } else {
+                System.out.println("Well done! Here are your stats");
+                userPlaying = false;
+                return;
+            }
+
+        }
+    }
+
+    public boolean playRound() {
+
+        boolean won = false; // true or false if won or not
+
+        return won;
 
     }
 
