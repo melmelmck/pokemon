@@ -100,6 +100,7 @@ public class Fighter implements java.io.Serializable {
     // constructors
     public Fighter(String name) {
         this.name = name;
+        this.moves = new ArrayList<Move>();
 
     }
 
@@ -120,6 +121,9 @@ public class Fighter implements java.io.Serializable {
         this.technologySupport = technologySupport;
         this.combatAbility = combatAbility;
 
+        // moves
+        this.moves = new ArrayList<Move>();
+
         // method calculating overall ratings
         overallrating(name, strength, speed, stamina, flyingPower, flyingPower, combatAbility);
 
@@ -130,6 +134,10 @@ public class Fighter implements java.io.Serializable {
     }
 
     // attack/move related methods
+
+    public void addMove(Move m) {
+        this.moves.add(m);
+    }
 
     private double calculateCurrentHP(double critDamage) {
 
