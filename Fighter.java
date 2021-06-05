@@ -37,7 +37,7 @@ public class Fighter implements java.io.Serializable {
         return this.score;
     }
     
-    public void setScore(double Score){
+    public void setScore(double score){
        this.score = score;
     }
 
