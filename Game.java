@@ -5,27 +5,31 @@ import java.io.*;
 public class Game {
 
     // class variables
-    public static Map<Double, Fighter> characters;
+    public Map<Double, Fighter> characters;
 
     // public final
-    public final static int NUMBER_OF_CHARS = 1;
+    public final static int NUMBER_OF_CHARS = 9;
 
     // accessor and modifier methods
 
     // game specific and setup methods
     public void startGame() {
+        getFighterData();
+        getMoveData();
+        promptStartGame();
 
     }
 
     public static void main(String[] args) {
 
-        getFighterData();
-        // promptStartGame();
+        Game g = new Game();
+        g.startGame();
+
     }
 
     // setup game method
 
-    public static void promptStartGame() {
+    public void promptStartGame() {
 
         Scanner sc = new Scanner(System.in); // can change this later to be compatible with graphs
         System.out.println("What is you name?");
@@ -37,7 +41,7 @@ public class Game {
         // display character list
         System.out.println("Which character would you like to choose?(Enter Number!)");
 
-        for (int i = 1; i <= characters.size(); i++) {
+        for (int i = 1; i <= NUMBER_OF_CHARS; i++) {
             System.out.println("Character " + i + " : " + characters.get(i - 1));
         }
 
@@ -45,11 +49,7 @@ public class Game {
 
     // data for game methods
 
-    public void getDataFromFiles(File file) {
-
-    }
-
-    public static ArrayList<Fighter> getFighterData() {
+    public ArrayList<Fighter> getFighterData() {
 
         ArrayList<Fighter> characterArray = new ArrayList<Fighter>();
 
@@ -96,7 +96,7 @@ public class Game {
 
     }
 
-    public static ArrayList<Fighter> getMoveData() {
+    public ArrayList<Fighter> getMoveData() {
 
         ArrayList<Fighter> characterArray = new ArrayList<Fighter>();
 
@@ -148,7 +148,7 @@ public class Game {
 
     }
 
-    public static ArrayList<Fighter> getSerialFighterData() {
+    public ArrayList<Fighter> getSerialFighterData() {
 
         // deserialize
         Fighter tempFighter = null;
