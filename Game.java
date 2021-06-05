@@ -124,7 +124,7 @@ public class Game {
                 // get
                 characterName = sc.next();
 
-                Fighter fighter = characters.get(i);
+                Fighter fighter = characters.get(i + 0.0);
 
                 for (int j = 0; j < 3; j++) {
                     moveName = sc.next();
@@ -187,7 +187,8 @@ public class Game {
         return characterArray;
 
     }
-    public void updatePlayerLevel(){
+
+    public void updatePlayerLevel() {
         user.getUserLevel++;
     }
 
