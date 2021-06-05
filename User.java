@@ -81,6 +81,20 @@ public class User {
   public void wonRound() {
     this.roundsWon = this.roundsWon + 1;
     System.out.println("Congrats on winning!");
+
+    if (roundsWon == 5) {
+      updatePlayerLevel();
+
+    } else if (roundsWon == 10) {
+      updatePlayerLevel();
+
+    } else if (roundsWon == 15) {
+      updatePlayerLevel();
+
+    } else if (roundsWon == 20) {
+      updatePlayerLevel();
+
+    }
   }
 
   public void chooseFighter() {
@@ -104,6 +118,54 @@ public class User {
   }
 
   public void updatePlayerLevel() {
-    userLevel++;
+    this.userLevel++;
+    if (userLevel == 1) {
+      System.out.println("Congrats, you are now at intermediate level.");
+
+    } else if (userLevel == 2) {
+      System.out.println("Congrats, you are now at advanced level.");
+
+    } else if (userLevel == 3) {
+      System.out.println("Congrats, you are now at expert level.");
+
+    } else if (userLevel == 4) {
+      System.out.println("Congrats, you are now at master level.");
+
+    } else {
+      System.out.println("Congrats! You have reached level 5 and beaten our game!");
+    }
+
+  }
+
+  public void printStats() {
+
+    System.out.println("User name: " + name);
+    System.out.println("Rounds Played: " + roundsPlayed);
+    System.out.println("Rounds Won: " + roundsWon);
+
+    if (userLevel == 0) {
+      System.out.println("Level: Novice");
+    }
+
+    if (userLevel == 1) {
+      System.out.println("Level: Intermediate");
+    }
+
+    if (userLevel == 2) {
+      System.out.println("Level: Advanced");
+    }
+
+    if (userLevel == 3) {
+      System.out.println("Level: Expert");
+    }
+
+    if (userLevel == 4) {
+      System.out.println("Level: Master");
+    }
+
+    if (userLevel == 5) {
+      System.out.println("Level: Parker");
+    }
+
   }
 }
