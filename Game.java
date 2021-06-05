@@ -5,7 +5,7 @@ import java.io.*;
 public class Game {
 
     // class variables
-    public static Map<String, Double> characters;
+    public static Map<Double, Fighter> characters;
 
     // public final
     public final static int NUMBER_OF_CHARS = 1;
@@ -67,6 +67,8 @@ public class Game {
             String tempTech;
             String tempCombat;
 
+            int index = 0;
+
             while (sc.hasNext()) {
                 sc.next();
                 tempName = sc.next();
@@ -82,9 +84,63 @@ public class Game {
                         Integer.parseInt(tempCombat));
 
                 characterArray.add(tempFighter);
+                characters.put((double) index, tempFighter);
+                index++;
             }
 
         } catch (FileNotFoundException e) {
+            System.out.println("Cannot find fighter data file.");
+        }
+
+        return characterArray;
+
+    }
+
+    public static ArrayList<Fighter> getMoveData() {
+
+        ArrayList<Fighter> characterArray = new ArrayList<Fighter>();
+
+        File moveData = new File("/Users/laasya/repos/GitHub/pokemon/MoveData.txt");
+
+        try {
+            Scanner sc = new Scanner(moveData);
+            // testing System.out.println(sc.nextLine());
+
+            String characterName;
+            String moveName;
+            String critRateString;
+            String critDamageString;
+
+            int size = characters.size();
+
+            System.out.println("size: " + size);
+
+            for (int i = 0; i < size; i++) {
+
+                // get
+                characterName = sc.next();
+
+                Fighter fighter = characters.get(i);
+
+                for (int j = 0; j < 3; j++) {
+                    moveName = sc.next();
+                    critRateString = sc.next();
+                    critDamageString = sc.next();
+
+                    Move tempMove = new Move(moveName, Double.parseDouble(critRateString),
+                            Double.parseDouble(critDamageString));
+
+                    fighter.getMoves().add(tempMove);
+
+                    System.out.println("Move: " + moveName + " added to character " + fighter.getName());
+
+                }
+
+            }
+
+        } catch (
+
+        FileNotFoundException e) {
             System.out.println("Cannot find fighter data file.");
         }
 
