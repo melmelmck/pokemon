@@ -10,9 +10,18 @@ public class User {
   // roung specific
   private int roundsPlayed;
   private Queue<Move> movesPlayed;
+  private int userLevel;
 
   // accessor and modifier methods
+  // Getter
+  public int getUserLevel() {
+    return userLevel;
+  }
 
+  // Setter
+  public void setUserLevel(int userLevel) {
+    this.userLevel = userLevel;
+  }
   // Getter
   public String getName() {
     return name;
@@ -52,4 +61,7 @@ public class User {
       name = sc.nextLine();
     }
   }
+  public void updatePlayerLevel(){
+    userLevel++;
+}
 }
