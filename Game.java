@@ -184,5 +184,8 @@ public class Game {
         return characterArray;
 
     }
+    public void updatePlayerLevel(){
+        user.getUserLevel++;
+    }
 
 }
